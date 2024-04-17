@@ -1,9 +1,17 @@
-function randomExaColor() {
-    let color = '#' + Math.floor(Math.random() * 16777215).toString(16);
+let textColor = "black";
+function randomColor() {
+    let blue = Math.floor(Math.random() * 256);
+    let red = Math.floor(Math.random() * 256);
+    let green = Math.floor(Math.random() * 256);
 
-    return color;
+    let backgroundColor = 'rgb(' + red + ',' +green + ',' + blue + ')';
+    
+
+    
+
+    return backgroundColor;
 }
-let randomColor = randomExaColor();
+
 
 const becodeurs =  [
     {nom: 'Lyne'},
@@ -38,6 +46,20 @@ const becodeurs =  [
 const body = document.querySelector('body');
 const article = document.querySelector('article');
 for (let i = 0; i < becodeurs.length; i++) {
+    let blue = Math.floor(Math.random() * 256);
+    let red = Math.floor(Math.random() * 256);
+    let green = Math.floor(Math.random() * 256);
+
+    let backgroundColor = 'rgb(' + red + ',' +green + ',' + blue + ')';
+
+    if(blue < 125 && red < 125 && green < 125){
+        textColor = "white";
+    }
+    else {
+        textColor = "black";
+    }
+
+
     article.appendChild(document.createElement("section"));
     let allSections = document.querySelectorAll('section');
 
@@ -46,13 +68,13 @@ for (let i = 0; i < becodeurs.length; i++) {
     const section = allSections[i];
     
     section.appendChild(document.createElement("p"));
-    section.style.backgroundColor = randomExaColor();
+    section.style.backgroundColor = backgroundColor;
     
     let p = document.querySelectorAll('p')
     p[i].innerText = becodeurs[numberRandom].nom
     becodeurs.splice(numberRandom, 1);
     console.log(becodeurs.length);
-    
+    p[i].style.color = textColor;
     
 }
 
